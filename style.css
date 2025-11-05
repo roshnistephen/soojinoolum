@@ -183,7 +183,7 @@ nav ul li a:not(.btn):focus::after {
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
     opacity: 0.9;
-    outline: 3px solid rgba(99, 102, 241, 0.3);
+    outline: 3px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
     outline-offset: 2px;
 }
 
@@ -198,7 +198,7 @@ nav ul li a:not(.btn):focus::after {
     background: var(--gradient-primary);
     color: var(--white);
     border-color: transparent;
-    outline: 3px solid rgba(99, 102, 241, 0.3);
+    outline: 3px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
     outline-offset: 2px;
 }
 
@@ -945,8 +945,7 @@ footer {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
-        max-width: 70%;
+        width: min(280px, 70vw);
         min-width: 250px;
         height: 100vh;
         background: var(--white);

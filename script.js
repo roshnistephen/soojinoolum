@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const navUl = document.querySelector('nav ul');
     
-    if (hamburger) {
+    if (hamburger && navUl) {
         hamburger.addEventListener('click', function(event) {
             event.stopPropagation();
             hamburger.classList.toggle('active');
