@@ -3,20 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const navUl = document.querySelector('nav ul');
     
+    // Create overlay element
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    document.body.appendChild(overlay);
+    
     if (hamburger && navUl) {
+        // Toggle menu when clicking hamburger
         hamburger.addEventListener('click', function(event) {
             event.stopPropagation();
-            hamburger.classList.toggle('active');
-            navUl.classList.toggle('active');
+            const isActive = hamburger.classList.contains('active');
+            
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
         
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('nav ul li a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navUl.classList.remove('active');
+                closeMenu();
             });
+        });
+        
+        // Close menu when clicking overlay
+        overlay.addEventListener('click', function() {
+            closeMenu();
         });
         
         // Close menu when clicking outside
@@ -25,11 +40,41 @@ document.addEventListener('DOMContentLoaded', function() {
             const isClickOnHamburger = hamburger.contains(event.target);
             
             if (!isClickInsideNav && !isClickOnHamburger && navUl.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navUl.classList.remove('active');
+                closeMenu();
             }
         });
+
+        // Prevent body scroll when menu is open
+        function openMenu() {
+            hamburger.classList.add('active');
+            navUl.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navUl.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
+
+    // Make brand/logo clickable to navigate home
+    const brands = document.querySelectorAll('.brand');
+    brands.forEach(brand => {
+        brand.addEventListener('click', function(e) {
+            // Only navigate if not clicking on a link inside brand
+            if (!e.target.closest('a')) {
+                // Navigate to root, works from any subdirectory
+                const currentPath = window.location.pathname;
+                const isHomePage = currentPath.endsWith('index.html') || currentPath.endsWith('/');
+                if (!isHomePage) {
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    });
     
     // Contact Form Submission Handler
     const contactForm = document.getElementById('contactForm');
