@@ -66,7 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
         brand.addEventListener('click', function(e) {
             // Only navigate if not clicking on a link inside brand
             if (!e.target.closest('a')) {
-                window.location.href = 'index.html';
+                // Navigate to root, works from any subdirectory
+                const currentPath = window.location.pathname;
+                const isHomePage = currentPath.endsWith('index.html') || currentPath.endsWith('/');
+                if (!isHomePage) {
+                    window.location.href = 'index.html';
+                }
             }
         });
     });
