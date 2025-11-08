@@ -6,9 +6,9 @@ A professional website showcasing custom apparel and clothing designs with a dyn
 
 - **Dynamic Gallery**: Automatically loads images from organized category folders
 - **Category Filtering**: Filter by Wedding Gown, Partywear Lehenga, Bridal Ariwork Blouse, Kids Birthday Frock, Dhavani Design, and New Arrivals
-- **Responsive Design**: Mobile-friendly layout that works on all devices
-- **Professional Styling**: Modern UI with smooth animations and transitions
-- **Proper Image Display**: All images are fully focused using object-fit cover
+- **Responsive Design**: Mobile-friendly layout that works on all devices.
+- **Professional Styling**: Modern UI with smooth animations and transitions.
+- **Proper Image Display**: All images are fully focused using object-fit cover.
 
 ## 📁 Gallery Structure
 
