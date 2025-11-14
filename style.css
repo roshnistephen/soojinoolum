@@ -454,7 +454,7 @@ nav ul li a:not(.btn):focus::after {
 /* Gallery Section */
 .gallery-section {
     padding: 60px 20px;
-    background: var(--white);
+    background: var(--bg-light);
 }
 
 .gallery-grid {
@@ -484,11 +484,17 @@ nav ul li a:not(.btn):focus::after {
     border-color: var(--primary-color);
 }
 
+.gallery-item[hidden] {
+    display: none !important;
+}
+
 .gallery-image {
     position: relative;
     height: 400px;
+    background-size: cover;
+    background-position: center;
     overflow: hidden;
-    background: var(--bg-light);
+    border-radius: 12px 12px 0 0;
 }
 
 .gallery-image img {
@@ -496,11 +502,85 @@ nav ul li a:not(.btn):focus::after {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block;
     transition: transform 0.4s ease;
 }
 
 .gallery-item:hover .gallery-image img {
     transform: scale(1.08);
+}
+
+/* Gallery Filters */
+.gallery-filters {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.filter-btn {
+    padding: 14px 28px;
+    border: 2px solid var(--border-color);
+    background: var(--white);
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-family: 'Inter', sans-serif;
+}
+
+.filter-btn.active {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+}
+
+.filter-btn.active:hover {
+    color: var(--white);
+}
+
+/* Gallery Empty State */
+.empty-state {
+    text-align: center;
+    color: var(--text-light);
+    padding: 60px 20px;
+    display: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.empty-state.show {
+    display: block;
+}
+
+/* Gallery Loading State */
+.gallery-grid.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 80px 20px;
+    font-size: 18px;
+    color: var(--text-light);
+    font-weight: 500;
 }
 
 /* Placeholder product images with different patterns */
